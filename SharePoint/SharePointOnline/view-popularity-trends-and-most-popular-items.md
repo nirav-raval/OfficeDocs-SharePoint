@@ -9,7 +9,7 @@ ms.date: 6/21/2018
 audience: End User
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-online
 ms.collection: M365-collaboration
 ms.localizationpriority: medium
@@ -92,6 +92,6 @@ To see more details for each item, click the **Popularity Trends** link under ea
 ## View Usage and Search reports for all sites
 <a name="__view_the_most"> </a>
 
-If you're a Global Administrator or SharePoint Administrator in Microsoft 365, you can view search usage reports for the whole organization. See [View usage and search reports](view-search-usage-reports-modern-sites.md).
+If you're a [SharePoint Administrator](/sharepoint/sharepoint-admin-role) or [above](/microsoft-365/admin/add-users/about-admin-roles) in Microsoft 365, you can view search usage reports for the whole organization. See [View usage and search reports](view-search-usage-reports-modern-sites.md).
   
 

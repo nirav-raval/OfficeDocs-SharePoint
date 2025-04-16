@@ -8,7 +8,7 @@ ms.date: 5/16/2017
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.collection:
@@ -24,5 +24,5 @@ description: "Take a SharePoint tutorial that can help you learn how to enable R
   
 By using Remote Microsoft PowerShell, you can make the administration of a SharePoint farm easier. To learn how to enable it, watch the following video.
   
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/828d4f5a-af37-4301-b5fe-06ccf79b83c6?autoplay=false]
+> [!VIDEO 6de97d54-4a40-4e93-aac3-7bc8cd2fa879]
 

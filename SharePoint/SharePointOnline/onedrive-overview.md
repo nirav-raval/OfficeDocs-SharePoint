@@ -1,5 +1,5 @@
 ---
-ms.date: 03/14/2024
+ms.date: 03/27/2025
 title: Overview of OneDrive in Microsoft 365
 ms.reviewer:
 ms.author: mactra
@@ -17,6 +17,7 @@ ms.collection:
 - Strat_OD_admin
 - M365-collaboration
 - essentials-overview
+- essentials-get-started
 ms.custom:
 - admindeeplinkSPO
 - onedrive-toc
@@ -87,7 +88,7 @@ Many organizations use OneDrive without changing any of the options. To change t
 
 - **Access control.** Go to <a href="https://go.microsoft.com/fwlink/?linkid=2185071" target="_blank">Access control</a> to control access from unmanaged devices or based on network location.
 
-- **Compliance.** [View the compliance and risk management solutions available in Microsoft 365](https://compliance.microsoft.com/solutioncatalog)
+- **Compliance.** [View the compliance and risk management solutions available in Microsoft Purview](https://purview.microsoft.com)
 
 - **Notifications.** Go to <a href="https://go.microsoft.com/fwlink/?linkid=2185072" target="_blank">Settings</a> and select **Notifications**. For information about this setting, see [Control notifications](/onedrive/turn-on-external-sharing-notifications).
 
@@ -99,4 +100,4 @@ If you need help with OneDrive, you have many ways to find solutions to common i
 
 - **Support documentation.** For a list of recent issues in OneDrive and how to resolve or work around them, see [Fixes or workarounds for recent issues in OneDrive](https://support.office.com/article/36110213-f3f6-490d-8cb7-3833539def0b). For getting started info, see [Get started with OneDrive](https://support.office.com/article/c7f31921-e2e5-4b00-959a-cc9ad6297de7), [Employee file storage (video training)](https://support.office.com/article/12dbe3e4-dbef-48f8-a90e-87f1bc607073) and [Why use OneDrive to store your docs](https://support.office.com/article/e55c4fa8-1e03-4d75-956b-924620bdfa2d).
 
-- **Microsoft Support.** If you need help from Microsoft to troubleshoot an issue or configure or deploy OneDrive, see [Contact Microsoft](https://support.microsoft.com/gp/contactus81?Audience=Commercial).
+- **Microsoft Support.** If you need help from Microsoft to troubleshoot an issue or configure or deploy OneDrive, see [Contact Microsoft](https://support.microsoft.com/contactus).

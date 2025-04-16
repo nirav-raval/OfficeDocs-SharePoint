@@ -1,28 +1,24 @@
 ---
-title: "Switch from an Enterprise Search Center to Basic in SharePoint"
+title: "Switch between an Enterprise Search Center and Basic in SharePoint"
 ms.reviewer: 
 ms.author: ruihu
 author: maggierui
 manager: jtremper
 recommendations: true
-ms.date: 7/25/2019
+ms.date: 10/07/2024
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.service: sharepoint-online
 ms.collection: M365-collaboration
 ms.localizationpriority: medium
 search.appverid:
 - MET150
-description: "Learn how to swap your default search center from Enterprise back to Basic."
+description: "Learn how to swap your default search center from Enterprise back to Basic and vice versa."
 ---
 
 # Switch from an Enterprise Search Center to Basic in SharePoint
-
->[!Important]
->This feature is gradually rolling out and might not be available yet for your organization.
-
 
 The Basic Search Center is a classic search experience. To offer your users a richer search experience, you can do one of the two things:
 - Switch from a Basic Search Center to an Enterprise Search Center
@@ -39,37 +35,39 @@ If you're currently using the Enterprise Search Center, you can easily replace (
     > [!NOTE]
     > If you installed a previous version of the SharePoint Online Management Shell, go to Add or remove programs and uninstall "SharePoint Online Management Shell." 
 
-2. Connect to SharePoint as a [Global Administrator or SharePoint Administrator](./sharepoint-admin-role.md) in Microsoft 365. To learn how, see [Getting started with SharePoint Online Management Shell](/powershell/sharepoint/sharepoint-online/connect-sharepoint-online).
+2. Connect to SharePoint as a [SharePoint Administrator](/sharepoint/sharepoint-admin-role) or [above](/microsoft-365/admin/add-users/about-admin-roles) in Microsoft 365. To learn how, see [Getting started with SharePoint Online Management Shell](/powershell/sharepoint/sharepoint-online/connect-sharepoint-online).
 
 3. Run the [Invoke-SPOSiteSwap](/powershell/module/sharepoint-online/invoke-spositeswap) cmdlet.
 
-```PowerShell  
-Invoke-SPOSiteSwap  
-  -SourceUrl <string>
-  -TargetUrl <string>
-  -ArchiveUrl <string>
-```
+    ```PowerShell  
+    Invoke-SPOSiteSwap  
+      -SourceUrl <string>
+      -TargetUrl <string>
+      -ArchiveUrl <string>
+    ```
 
-| Parameter   | Description                                   |
-|-------------|-----------------------------------------------|
-| -SourceUrl  | The site you want to promote.                 |
-| -TargetUrl  | The site you want to replace.                 |
-| -ArchiveUrl | URL that the target site is archived to. |
+  | Parameter   | Description                                   |
+  |-------------|-----------------------------------------------|
+  | -SourceUrl  | The site you want to promote.                 |
+  | -TargetUrl  | The site you want to replace.                 |
+  | -ArchiveUrl | URL that the target site is archived to. |
 
   
-Here's an example of how to use these parameters when swapping an existing Enterprise Search Center to Basic:
+  Here's an example of how to use these parameters when swapping an existing Enterprise Search Center to Basic:
 
-- **For your -SourceUrl**, you need the URL of your Basic Search Center site. The site must exist before running the cmdlet. For our example, we use \<spam\>\<spam\>https://contoso.sharepoint.com/sites/SiteSearch\<spam\>\<spam\>.
+  - **For your -SourceUrl**, you need the URL of your Basic Search Center site. The site must exist before running the cmdlet. For our example, we use \<spam\>\<spam\>https://contoso.sharepoint.com/sites/SiteSearch\<spam\>\<spam\>.
 
-    You can [create a Basic Search Center site](https://support.office.com/article/449eccec-ff99-4cf3-b62e-dcfee37e8da4) from an Enterprise site template.
-- **For your -TargetUrl**, you need the URL of your Enterprise Search Center site that you want to replace. For our example, we use \<spam\>\<spam\>https://contoso.sharepoint.com/search\<spam\>\<spam\>.
-- **For your -ArchiveUrl**, use a Url that doesn't currently exist at the location. Your Enterprise Search Center site is archived to this site location. For our example, we use \<spam\>\<spam\>https://contoso.sharepoint.com/sites/ArchivedEntSearch\<spam\>\<spam\>. 
+  You can [create a Basic Search Center site](https://support.office.com/article/449eccec-ff99-4cf3-b62e-dcfee37e8da4) from an Enterprise site template.
+
+  - **For your -TargetUrl**, you need the URL of your Enterprise Search Center site that you want to replace. For our example, we use \<spam\>\<spam\>https://contoso.sharepoint.com/search\<spam\>\<spam\>.
+  
+  - **For your -ArchiveUrl**, use a Url that doesn't currently exist at the location. Your Enterprise Search Center site is archived to this site location. For our example, we use \<spam\>\<spam\>https://contoso.sharepoint.com/sites/ArchivedEntSearch\<spam\>\<spam\>. 
 
 Here's how to use the examples in the Invoke-SPOSiteSwap cmdlet:
 
-```PowerShell  
-Invoke-SPOSiteSwap -SourceUrl https://contoso.sharepoint.com/sites/SearchSite -TargetUrl https://contoso.sharepoint.com/search -ArchiveUrl https://contoso.sharepoint.com/sites/ArchivedEntSearch
-```
+  ```PowerShell  
+  Invoke-SPOSiteSwap -SourceUrl https://contoso.sharepoint.com/sites/SearchSite -TargetUrl https://contoso.sharepoint.com/search -ArchiveUrl https://contoso.sharepoint.com/sites/ArchivedEntSearch
+  ```
 
 Successfully running the cmdlet would result in:
 - Basic Search is the default Search Center experience. When users go to \<spam\>\<spam\>https://contoso.sharepoint.com/search\<spam\>\<spam\>, they're now using the Basic Search Center.

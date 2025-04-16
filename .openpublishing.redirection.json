@@ -1,6 +1,65 @@
 {
   "redirections": [
     {
+      "source_path": "Sharepoint/SharepointOnline/terms-of-service-version-history.md",
+      "redirect_url": "/SharePoint/version-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/build-learning-and-training-experiences-for-employees.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/onboard-employees.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },{
+      "source_path": "SharePoint/SharePointOnline/sharepoint-app-prioritization.md",
+      "redirect_url": "/SharePoint/sharepoint-prioritization",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/leadership-connection.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/distribute-corporate-news-to-your-organization.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/choose-communication-method.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/audience-profile.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/review-communication-apps.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/plan-communication-strategy.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/corporate-communications-overview.md",
+      "redirect_url": "/viva/microsoft-viva-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "Sharepoint/SharepointOnline/fluid-framework-access.md",
+      "redirect_url": "https://support.microsoft.com/office/get-started-with-loop-components-preview-d05278db-b82b-4d1f-8523-cf0c9c2fb2df",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "Sharepoint/SharepointOnline/create-custom-ranking-model.md",
       "redirect_url": "/sharepoint/search/create-custom-ranking-model",
       "redirect_document_id": true
@@ -1217,6 +1276,26 @@
     },
     {
       "source_path": "migration/mover-scan.md",
+      "redirect_url": "/sharepointmigration/migrate-to-sharepoint-online",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "sharepoint/sharepointonline/onedrive-in-horizon-virtual-apps-deployment-guide.md",
+      "redirect_url": "/sharepoint/sync-vdi-support",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "sharepoint/sharepointonline/onedrive-in-citrix-virtual-apps-deployment-guide.md",
+      "redirect_url": "/sharepoint/sync-vdi-support",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "sharepoint/sharepointonline/advanced-management-faq.md",
+      "redirect_url": "/sharepoint/advanced-management",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "migration/new-migration-transition.md",
       "redirect_url": "/sharepointmigration/migrate-to-sharepoint-online",
       "redirect_document_id": false
     }

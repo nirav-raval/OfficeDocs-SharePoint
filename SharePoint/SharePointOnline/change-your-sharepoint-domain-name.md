@@ -9,7 +9,7 @@ recommendations: true
 audience: Admin
 f1.keywords:
 - CSH
-ms.topic: article
+ms.topic: how-to
 ms.custom:
 - 'SPOTADNS'
 - 'O365M_DomainsWizAdd_SPOUseMultiServices'
@@ -37,12 +37,13 @@ description: "Learn about changing the domain name in your SharePoint and OneDri
 
 When you first signed up for Microsoft 365, you created an onmicrosoft.com domain. Even if you later added a custom domain, the original onmicrosoft.com domain is used for all your SharePoint and OneDrive URLs. 
 
-If your organization has gone through a rebranding, merger, or acquisition and needs to change the domain in your SharePoint and OneDrive URLs, you can do this using PowerShell. For example, if your organization name changed from Contoso to Fabrikam, you can change your SharePoint URLs from `contoso.sharepoint.com` to `fabrikam.sharepoint.com`.
+If your organization is going through a rebranding, merger, or acquisition and needs to change the domain in your SharePoint and OneDrive URLs, you can do this using PowerShell. For example, if your organization name changed from Contoso to Fabrikam, you can change your SharePoint URLs from `contoso.sharepoint.com` to `fabrikam.sharepoint.com`.
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWOnwY]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=929a7177-9508-4970-b74f-4ff19627f2ca]
 
 >[!IMPORTANT]
-> - The standard version of this feature is currently available to organizations that have no more than 10,000 total SharePoint sites and OneDrive accounts combined.
+> - When the rename operation begins, all sites in the tenant are queued for individual renames to the new domain. While this is happening, sites that are on the original domain would be temporarily inaccessible. Once each site is renamed to the new domain, it will become accessible again.
+> - The standard version of this feature is currently available to organizations that have no more than 10,000 total sites, which includes SharePoint sites, OneDrive accounts and SharePoint Embedded containers combined. 
 > - Advanced Tenant Rename is available to organizations that have less than 100,000 total sites, available with SharePoint Advanced Management. See [Advanced Tenant Rename](change-your-sharepoint-domain-name.md#advanced-tenant-rename).
 > - This change affects only SharePoint and OneDrive URLs. It doesn't impact email addresses.
 > - For info about changing a site address, for example, from `https://contoso.sharepoint.com/sites/sample1` to  `https://contoso.sharepoint.com/sites/sample2`, see [Change a site address](change-site-address.md). 
@@ -79,12 +80,14 @@ If your organization has gone through a rebranding, merger, or acquisition and n
 | Custom apps and Group Policy objects | Absolute URLs embedded in these apps and objects aren't changed. | Edit custom apps and Active Directory Group Policy objects that contain absolute URLs and if necessary, change the URLs to the new domain name. Confirm with third-party app publishers that apps don't contain absolute URLs. |
 | Custom and third-party apps | Some apps might not process the HTTP 308 direct correctly. | Edit custom apps and work with third-party app publishers to ensure that they handle HTTP 308 responses correctly. |
 | Delve | It can take 24 hours before People profiles can be viewed. | None |
-| eDiscovery | Holds can't be removed until you update the URLs. | In the Microsoft Purview compliance portal, change the eDiscovery hold URLs to the new domain name. |
+| eDiscovery | Holds can't be removed until you update the URLs. | In the Microsoft Purview portal, change the eDiscovery hold URLs to the new domain name. |
 | InfoPath forms | Forms that use a SharePoint connection as a data source don't work. | Reconnect these forms to SharePoint. |
+| Loop | Existing workspaces can't be shared and new pages can't be added to them. | No action is available. |
 | Microsoft 365 Archive | Archived sites aren't renamed. | Reactivate archived sites before the rename. <br>Avoid archiving any sites during the rename. |
 | Microsoft Forms | Forms that have the option to upload attachments in responses don't work. | Remove the upload button and add it again in the form. |
-| Office apps | While the domain name is being changed, users might experience an error when saving Word, Excel, and PowerPoint documents that are located in a site or OneDrive. | Attempt to save the document again and if necessary change the URL of the save location. |
+| Office apps | While the domain name is being changed, users might experience an error when saving Word, Excel, and PowerPoint documents that are located in a site or OneDrive. | Attempt to save the document again and if necessary change the URL of the Save location. |
 | OneDrive | The Quick access links in OneDrive and SharePoint don't work. | No action is available.  |
+| OneDrive app in Teams | Accessing the app returns a 404 error. | Until a fix is released, to resolve the error: <br> 1. Create a 1:1 chat with another user. <br> 2. In the message box, select **Actions and apps** > **Attach file** > **Upload from this device**.<br> 3. Select a file you will send to the other user, then select **Open**.<br> 4. Press **Enter** to send the file or select **Send**.<br> After you’ve sent the file, navigate to the OneDrive app in Teams.|
 | Power Automate | Request sign-off flows that use SharePoint as a connection don’t work. | Remove and re-create the Request sign-off flow. |
 | Power Automate | Any flows deployed as solutions with managed layers that use SharePoint as a connection don’t work. | Remove and re-create the flows. |
 | Power Automate | Some regular flows don't work after the rename. | As part of the rename operation, updates to Power Automate are attempted but a small subset may fail due to service issues. For any flows identified that don't work, manually update the URL. |
@@ -103,7 +106,7 @@ If your organization has gone through a rebranding, merger, or acquisition and n
 | Teams on the web and Teams desktop app | The first time someone tries to access the Files tab for a team or private channel, they receive an error. The tab will work for all users after that. | None |
 | Teams on the web and Teams desktop app | It can take 72 hours for meeting notes to work (for both current and previous meetings). | None |
 | Teams on the web and Teams desktop app | On the Files tab, any folders added with the "Add cloud storage" (which point to another SharePoint site) don't work.| Remove and re-add the folders. |
-| Teams on the web and Teams desktop app | Document libraries added as a tab don't work. | Remove and re-add the tab. |
+| Teams on the web and Teams desktop app | Document libraries and SharePoint Lists added as tabs don't work. | Remove and re-add the tabs. |
 | Teams on the web and Teams desktop app | Embedded images in Wikis aren't displayed. | Edit the Wiki.mht file located in the SharePoint Site Teams Wiki Data library and if necessary, change the URLs of the embedded images to the new domain name. |
 | Teams on the web and Teams desktop app | Personal Wikis won’t work. | In a one-on-one or group chat, attach and send a file to the chat. |
 | Third-party apps including backup solutions | Absolute URLs embedded in these third-party apps (including backup solutions) aren't changed. | Confirm with third-party app publishers (including backup solutions) that they support tenant renames. |
@@ -117,7 +120,7 @@ If your organization has gone through a rebranding, merger, or acquisition and n
 | Business Productivity Online Suite (BPOS) sites | If your tenant still has Microsoft Business Productivity Online Suite (BPOS) sites remaining in it, your domain name can't be changed. | BPOS sites and its configuration need to be removed before scheduling of tenant renaming can be attempted. Submit a support request by selecting [Rename a SharePoint Tenant with BPOS sites](https://admin.microsoft.com/AdminPortal/?searchSolutions=Rename%20a%20SharePoint%20Tenant%20with%20BPOS%20sites). |
 | Deleted sites | Any sites that have been deleted can't be restored after the change. | Before changing your domain name, review the Deleted sites page in the SharePoint admin center and restore any sites that you might want to keep. |
 | Historical German cloud (.de) tenants | If your tenant was originally in the German cloud with a .de domain, your domain name can't be changed. This applies even if your tenant was later migrated to the regular cloud but still retains the .de domain. | No action available. |
-| Locked sites and OneDrive accounts | Any site or OneDrive that has been locked (the LockState is NoAccess) can't be renamed. | Before changing your domain name, review any sites and OneDrive accounts that are locked to determine if the lock should be removed. [Lock and unlock sites](manage-lock-status.md)|
+| Locked sites and OneDrive accounts | Any site or OneDrive that is locked (the LockState is NoAccess) can't be renamed. | Before changing your domain name, review any sites and OneDrive accounts that are locked to determine if the lock should be removed. [Lock and unlock sites](manage-lock-status.md)|
 | Multi-Geo configurations | Your SharePoint domain name can't be changed if your organization is currently set up for Microsoft 365 Multi-Geo or was previously set up for it.  | No action available. |
 | Point-in-time restoration | Restoring a site to a previous time before the domain name change isn't possible. | No action available.|
 | Root site replacement | Your [root site](modern-root-site.md) can't be replaced (using either the SharePoint admin center or the PowerShell cmdlet Invoke-SPOSiteSwap) between the time you schedule your domain name change and when it completes. | Replace your root site before you schedule the domain name change or after it completes. |
@@ -134,7 +137,7 @@ Advanced Tenant Rename is a part of SharePoint Advanced Management.
 Advanced Tenant Rename can currently only support tenants meeting the following conditions:
 -  You must have SharePoint Advanced Management licenses purchased for all users in your organization.
 - Your organization has <100,000 total sites.
-- Your organization doesn’t have Microsoft365 Multi Geo enabled.
+- Your organization doesn’t have Microsoft 365 Multi Geo enabled.
 - Your organization doesn’t use government clouds, including GCC, GCC High and DoD.
 - Your organization doesn’t use vanity domains (from the earlier MTE offering).
 
@@ -148,11 +151,11 @@ To manage prioritization, you can make use of the following PowerShell cmdlets.
 - [Remove-SPOTenantRenameSitePrioritization](/powershell/module/sharepoint-online/remove-spotenantrenamesiteprioritization) – This allows you to remove prioritization for the specified site.
 - [Get-SPOTenantRenameSitePrioritization](/powershell/module/sharepoint-online/get-spotenantrenamesiteprioritization) – This allows you to view the current list of prioritized sites.
 
-The PowerShell cmdlets for prioritization should be used once the tenant rename has been scheduled. Changes to the list of prioritized sites will be supported up to 2 hours before the scheduled start time of the rename. Once the rename starts, further changes will not be accepted. 
+The PowerShell cmdlets for prioritization should be used once the tenant rename is scheduled. Changes to the list of prioritized sites will be supported up to 2 hours before the scheduled start time of the rename. Once the rename starts, further changes will not be accepted. 
 
 ## Step 1: Add the new domain name
 
-1. Check the availability of the new domain you want. For example, if you want your SharePoint and OneDrive URLs to begin with `fabrikam.sharepoint.com`, enter `https://fabrikam.sharepoint.com` in a browser. If you get a message that the address couldn’t be found (404), it’s probably available. If you get a sign-in screen or a message that your username couldn’t be found in the fabrikam.sharepoint.com directory, then the domain has already been taken and you need to try a different one. If the domain is already registered by another customer, we can't provide any information or contact the customer. 
+1. Check the availability of the new domain you want. For example, if you want your SharePoint and OneDrive URLs to begin with `fabrikam.sharepoint.com`, enter `https://fabrikam.sharepoint.com` in a browser. If you get a message that the address couldn’t be found (404), it’s probably available. If you get a sign-in screen or a message that your username couldn’t be found in the fabrikam.sharepoint.com directory, then the domain is taken and you need to try a different one. If the domain is already registered by another customer, we can't provide any information or contact the customer. 
 
     -or-
 
@@ -162,16 +165,17 @@ The PowerShell cmdlets for prioritization should be used once the tenant rename 
     > Do NOT use the domain to test this procedure in a test environment first. If you do, you won't be able to use the domain for your production environment.
 
 2. Add your [new .onmicrosoft.com domain using the Domains page in the M365 Admin Center](/microsoft-365/admin/setup/add-or-replace-your-onmicrosoftcom-domain#add-a-new-onmicrosoftcom-domain). 
-     - Do not use the "Add domain" option directly present in the Domains page, since that does not create a .onmicrosoft.com domain. Use the steps in the link above to correctly create one.
-     - Do not make this domain your fallback domain.
+     - Don't use the "Add domain" option directly present in the Domains page, since that does not create a .onmicrosoft.com domain. Use the steps in the link above to correctly create one.
+     - Don't make this domain your fallback domain.
     
 3. Go back to the Domains page and check that the newly added .onmicrosoft.com domain appears in a 'Healthy' state.
 
 ## Step 2: Use Microsoft PowerShell to rename your domain
 
 > [!WARNING]
+> - When the change of the SharePoint domain starts, sites that remain on the original domain will be temporarily inaccessible. As each site gets renamed to the new domain, it will become accessible again.
 > - Changing your SharePoint domain name might take several hours to days depending on the number of sites and OneDrive users that you have. We strongly recommend that you make this change during a period of low usage (like a weekend) and tell users to avoid accessing SharePoint and OneDrive content during the change. In addition, any actions that create new OneDrives and sites (such as creating a new team or private channel in Microsoft Teams) will be temporarily blocked during the rename.
-> - Do not plan any UPN changes or renames while the change of your SharePoint domain name is in progress. If you need to perform any, please do so after the domain name change is complete.
+> - Don't plan any UPN changes or renames while the change of your SharePoint domain name is in progress. If you need to perform any, please do so after the domain name change is complete.
   
 1. **REQUIRED** - [Download the latest SharePoint Online Management Shell](https://go.microsoft.com/fwlink/p/?LinkId=255251). If you installed a previous version of the SharePoint Online Management Shell, go to Add or remove programs and uninstall "SharePoint Online Management Shell". Make sure you review the System Requirements and Install Instructions. The app isn't supported on Mac.
   
@@ -193,7 +197,7 @@ The PowerShell cmdlets for prioritization should be used once the tenant rename 
 
     `Start-SPOTenantRename -DomainName "fabrikam" -ScheduledDateTime "2021-12-31T10:25:00"`
 
-   If the PowerShell command Start-SPOTenantRename is not found or nothing is returned, make sure you installed the latest SharePoint Online Management Shell. Before installing the latest version, you might need to uninstall all previous versions by running `Uninstall-Module Microsoft.Online.SharePoint.PowerShell -Force -AllVersions`. For more info about the Start-SPOTenantRename cmdlet, see [Start-SPOTenantRename](/powershell/module/sharepoint-online/start-spotenantrename)
+   If the PowerShell command Start-SPOTenantRename isn't found or nothing is returned, make sure you installed the latest SharePoint Online Management Shell. Before installing the latest version, you might need to uninstall all previous versions by running `Uninstall-Module Microsoft.Online.SharePoint.PowerShell -Force -AllVersions`. For more info about the Start-SPOTenantRename cmdlet, see [Start-SPOTenantRename](/powershell/module/sharepoint-online/start-spotenantrename)
 
 To cancel a rename before it starts, you can run `Stop-SPOTenantRename`. [More info about this cmdlet](/powershell/module/sharepoint-online/start-spotenantrename)
 

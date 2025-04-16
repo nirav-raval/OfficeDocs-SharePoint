@@ -8,7 +8,7 @@ manager: serdars
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: faq
 ms.service: sharepoint-server-itpro
 ms.collection: SPO_Content
 ms.localizationpriority: medium
@@ -39,6 +39,9 @@ The Hybrid Configuration Wizard automates certain configuration steps to configu
 If you plan to configure Cloud hybrid search with HA topologies in SharePoint Server, you can configure it with the Hybrid Configuration Wizard. The Hybrid Configuration Wizard has automated certain configuration steps needed to connect your on-premises SharePoint Server environment with SharePoint in Microsoft 365 for Cloud hybrid search. [Learn more](./configure-cloud-hybrid-searchroadmap.md).
 
 ***What is hybrid federated search and how is it different from Cloud hybrid search?***
+
+>[!IMPORTANT]
+>Hybrid Federated Search in SharePoint for Microsoft 365 (Inbound), the capability to display search results from SharePoint on-premises content in SharePoint Online, has been retired as of September 2024. Hybrid Federated Search for SharePoint Server (Outbound), the ability to view SharePoint Online search results in SharePoint on-premises, and Cloud hybrid search remain operational. If you need to display search results from external content in SharePoint Online, we recommend you use Microsoft Search Graph Connectors or Cloud hybrid search.
 
 Hybrid federated search and Cloud hybrid search are the two hybrid experiences that a search administrator can choose while configuring hybrid search with Microsoft 365.
 

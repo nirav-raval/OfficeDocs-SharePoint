@@ -1,5 +1,5 @@
 ---
-ms.date: 06/18/2020
+ms.date: 01/13/2025
 title: Create or customize a content type
 ms.reviewer: anfra
 ms.author: ruihu
@@ -8,7 +8,7 @@ manager: jtremper
 recommendations: true
 audience: Admin
 f1.keywords: NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-online
 ms.localizationpriority: medium
 search.appverid:

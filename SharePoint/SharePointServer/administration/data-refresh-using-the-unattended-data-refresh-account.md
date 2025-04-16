@@ -8,7 +8,7 @@ ms.date: 7/6/2017
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.assetid: 3fdbc40b-8562-4bec-be89-113a64e19911
@@ -44,7 +44,8 @@ This video shows the steps involved in configuring scheduled data refresh in SQL
   
 **Video: Configure scheduled data refresh for Power Pivot by using the unattended data refresh account**
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/e6d852d5-c321-4703-a5a5-8b8f37a8ffa7?autoplay=false]
+> [!VIDEO 2568759a-fe8b-4373-8db6-68c9e8143c0c]
+
 ## Configure access to your data source
 <a name="proc1"> </a>
 

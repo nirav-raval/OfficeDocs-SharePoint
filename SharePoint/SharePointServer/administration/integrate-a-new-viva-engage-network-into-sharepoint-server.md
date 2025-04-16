@@ -8,7 +8,7 @@ ms.date: 9/7/2018
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: integration
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.assetid: 6485e76d-9c52-40eb-ae0f-4e00c321c7d8
@@ -39,7 +39,7 @@ Viva Engage is included in many Microsoft 365 subscriptions, which means that yo
   
 ## Step 2: Create your Viva Engage network
 
-To set up a Viva Engage network, see [Viva Engage admin help](/viva/engage/viva-engage-landing-page).
+To set up a Viva Engage network, see [Viva Engage admin help](/viva/engage/eac-overview).
   
 When you set up your network, [enforce Microsoft 365 identity for Viva Engage users](/viva/engage/configure-your-viva-engage-network/enforce-office-365-identity).
   

@@ -3,12 +3,13 @@ title: "Migration Manager and the European Union Data Boundary (EUDB)"
 ms.reviewer: 
 ms.author: heidip
 author: MicrosoftHeidi
+ms.date: 02/27/2025
 manager: jtremper
 recommendations: true
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.service: microsoft-365-migration
 ms.localizationpriority: high
 ms.collection: 

@@ -1,5 +1,5 @@
 ---
-ms.date: 08/07/2023
+ms.date: 03/25/2025
 title: "Step 2: Scan and assess Google accounts using Migration Manager"
 ms.reviewer:
 ms.author: heidip
@@ -8,7 +8,7 @@ manager: jtremper
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: microsoft-365-migration
 ms.localizationpriority: high
 ms.collection:
@@ -25,69 +25,40 @@ description: "Step 2:  Scan and assess Google users using Migration Manager."
 
 # Step 2: Scan and assess Google Drives
 
-After you have connected to Google, add the Drives to scan and assess.
+After you connect to Google, add the tasks (Drives) to scan and assess.
 
-1. Select **Add Drives** and choose a method: to look for new users in Google Drives, target a single source path, or bulk upload the source paths using a CSV file.  You can choose to automatically start scanning or do it later.  However, all drives must be scanned before you can migrate them.
+1. Select **Add Drives** and choose a method: to look for new users in Google Drives, target a single source path, or bulk upload the source paths using a CSV file. You can choose to automatically start scanning or do it later. However, all tasks must be scanned before you can migrate them.
 
-   :::image type="content" source="media/mm-google-add-drive-choices.png" alt-text="select how to add google drives":::
+   :::image type="content" source="media/mm-google-add-drive-choices.png" alt-text="Select how to add google drives.":::
 
-2. After adding the drives, highlight any or all of the drives and then select **Scan** if you haven't already.
-
+2. After adding the tasks, highlight any or all of the tasks and then select **Scan** from the menu bar if you haven't already.
+3. Once the scan is complete, a table summary displays to give you an at-a-glance source content overview, scan status, etc.
+4. Review the scanned tasks. Search for specific text, or select a filter to review the list more easily or download summary and detailed reports to troubleshoot further.
 >[!Important]
-> The total number cannot exceed 50,000 tasks.
-
-3. Once the scan is complete, a table summary displays to give you an at-a-glance overview of your users. The summary includes content size, migration readiness, and any issues that need attention. Review the scanned users. Search for specific text, or select a filter to review the list more easily or download summary and detailed reports to troubleshoot further.
+> The total number of rows (tasks) in the scan list cannot exceed 50,000.
 
 ## Download reports
+**Scan summary report** and **Scan detailed reports** are available to assist you in troubleshooting. [Download the generated reports](/sharepointmigration/mm-cloud-reports#download-scan-reports) to investigate any possible issues that might block your migration. 
 
-Summary and detailed scan reports are available to assist you in troubleshooting. Download the generated reports and logs to investigate any possible issues that might block your migration.
+Check the [status code](/sharepointmigration/mm-cloud-reports#status-codes) in **Scan summary report** to address task-level errors. For file-level errors, refer to the [failure code (*ResultCode*)](/sharepointmigration/mm-cloud-reports#failure-codes) in the **Scan detailed report**.
 
-1. Once the scan is complete, select **Download reports**.
 
-   ![download reports for google](media/mm-google-download-reports-button.png)
-
-2. To download a detailed scan report for an individual account, select a single row, then select **Download scan log**.   </br>
-
-## Managing users who own large amounts of data
+## Managing Drives that own large amounts of data
 
 Upon completing your scan, download the scan reports and review/address any large source data owners.
 
-The more users simultaneously being transferred, the higher our throughput for your migration. Users with large data sets should be broken into smaller Service Accounts to facilitate faster transfers.
+A migration task (Google Drive) shouldn't exceed 100,000 items or 1 TB of data. To enable faster transfers, Google Drives with large data sets should be divided into smaller migration tasks based on their root folders.
 
-> [!IMPORTANT]
-> To maximize throughput, **users should not own greater than 100,000 items or 1 TB of data**. The more users you have, and the smaller the amounts of data they own, the faster your migration proceeds.
+To split a Drive into multiple migration tasks, follow these steps:
 
-**Examples**:
-
-|Size|Action|
-|---|---|
-|If a user owns more than 400,000 items|Divide the items between four users each with 100,000 items.|
-|If a user owns more than 5 TB of data|Divide between five users so that each user owns 1 TB. |
-
-To create Service Accounts, work with your G-Suite Admin to carry out the following steps:
-
-1. Once you have identified a large user, determine how many Service Accounts will be required (see example above).
-2. Create the Service Accounts in G-Suite and assign them a license.
-3. From the original large user, identify the folder(s) you would like to assign to the Service Account.
-4. Change the ownership of said folder(s) to the new Service Account. This may require that the original owner first share it with the new owner, where the new owner would have to accept, then the original owner will then have the option to select them as owner. The original owner becomes co-owner of the folder and the permissions will reflect that new status in the Source account. The Folder will no longer appear in their My Files folder but will now appear in Shared with me.
-5. When it comes to migrating the Service Account, create a corresponding OneDrive user/SharePoint site to migrate the new Service Account content to.
-
-When mapping please ensure that each Service Account has its own unique matching Destination account to optimize performance.
-
-|Source Path|Destination Path|
-|---|---|
-|originaluser@contoso.com|originaluser@contoso.com/[upload folder]*|
-|serviceaccount1@contoso.com|serviceaccount1@contoso.com/[upload folder]*|
-|serviceaccount2@contoso.com|serviceaccount2@contoso.com/[upload folder]*|
-|serviceaccount3@contoso.com|serviceaccount3@contoso.com/[upload folder]*|
-
-
-Asterisk (*) = optional folder
+1. Delete the Drive.
+1. Select **Add Drives** from the command bar.
+1. In the side panel that appears, select **Multiple specific Drives**.
+4. Download and edit the provided .csv template file to divide the user into multiple tasks. For example:
+    - `LargeDrive01@contoso.com/folder01`  
+    - `LargeDrive01@contoso.com/folder02`  
+    - `LargeDrive01@contoso.com/folder03`  
+    - `LargeDrive01@contoso.com/folder04` 
+5. Save the updated .csv file and upload it to create the divided migration tasks.
 
 ## Go to [**Step 3: Copy to migrations**](mm-Google-step3-copy-to-migrations.md)
-
-> [!NOTE]
-> Migration Manager Google isn't available for users of Office 365 operated by 21Vianet in China.
->
-> This feature is also not supported for users of the Government Cloud, including GCC, Consumer, GCC High, or DoD.
-

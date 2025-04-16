@@ -1,14 +1,14 @@
 ---
-ms.date: 11/14/2023
+ms.date: 09/18/2024
 title: "Transition from the previous OneDrive for Business sync app"
-ms.reviewer:
+ms.reviewer: kafeaver
 ms.author: mactra
 author: MachelleTranMSFT
 manager: jtremper
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: one-drive
 ms.localizationpriority: medium
 ms.collection:

@@ -8,7 +8,7 @@ ms.date: 2/20/2018
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.collection:
@@ -38,7 +38,7 @@ When you upgrade from SharePoint 2010 Products to SharePoint 2013, you must use 
 
 **Watch the SharePoint 2013 Upgrade: Phase 1 video**
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/08375e2a-bf70-44f9-b25e-569e4ac3e303?autoplay=false]
+> [!VIDEO e3e50c93-6422-42e9-b934-053c11727823]
 
 ## Before you begin
 <a name="begin"> </a>

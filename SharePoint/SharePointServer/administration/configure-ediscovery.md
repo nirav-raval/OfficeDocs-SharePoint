@@ -1,14 +1,14 @@
 ---
 title: "Configure eDiscovery"
 ms.reviewer: 
-ms.author: serdars
-author: SerdarSoysal
-manager: serdars
-ms.date: 8/14/2017
+ms.author: ruihu
+author: maggierui
+manager: jtremper
+ms.date: 12/2/2024
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.assetid: b987b833-1ba4-43bb-8c35-6bb56f986572
@@ -47,7 +47,6 @@ This document contains instructions for the following:
   
 ## See also
 
-#### Other Resources
+### Other Resources
 
-[Test Lab Guides](https://go.microsoft.com/fwlink/p/?LinkId=202817)
-
+[Test Lab Guides](https://www.microsoft.com/download/details.aspx?id=30386)

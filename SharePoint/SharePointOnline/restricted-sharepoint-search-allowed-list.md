@@ -1,5 +1,5 @@
 ---
-ms.date: 04/12/2024
+ms.date: 2/28/2025
 title: "Curate the allowed list for Restricted SharePoint Search"
 ms.reviewer: 
 ms.author: ruihu
@@ -20,14 +20,14 @@ description: "Learn how to use SharePoint Admin Center active sites report and S
 
 # Curate the allowed list for Restricted SharePoint Search
 > [!IMPORTANT]
-> Restricted SharePoint Search is designed for customers of Copilot for Microsoft 365. Visit [here](https://go.microsoft.com/fwlink/p/?linkid=2260808) and the [overview of Restricted SharePoint Search](/sharepoint/restricted-sharepoint-search) for more information.
+> Restricted SharePoint Search is designed for customers of Microsoft 365 Copilot. Visit [here](https://go.microsoft.com/fwlink/p/?linkid=2260808) and the [overview of Restricted SharePoint Search](/sharepoint/restricted-sharepoint-search) for more information.
 
-As a Global and SharePoint admin, you can set up an allowed list of Restricted SharePoint Search with a maximum of 100 selected SharePoint sites. For Copilot and organization-wide search, besides the contents that they already have access to, either by direct sharing, visiting, or owning, your organization’s users will only be able to reach the sites on the allowed list, honoring these sites’ current permissions.
+As a [SharePoint Administrator](/sharepoint/sharepoint-admin-role) or [above](/microsoft-365/admin/add-users/about-admin-roles) in Microsoft 365, you can set up an allowed list of Restricted SharePoint Search with a maximum of 100 selected SharePoint sites. For Copilot and organization-wide search, besides the contents that they already have access to, either by direct sharing, visiting, or owning, your organization’s users will only be able to reach the sites on the allowed list, honoring these sites’ current permissions.
 
 Setting up the allowed list in Restricted SharePoint Search gives you time to review and audit site permissions. But which sites should be included in the allowed list? This article introduces strategies and techniques for curating the allowed list.
 
 ## Steps to create the curated allowed list
-To create a curated allowed list for Restricted SharePoint Search, we recommend you start by creating an initial list of sites. Then you work with your site admins and stakeholders to assess permissions and review the sites. Finally, you can [apply the list with PowerShell scripts as a Global admin](restricted-sharepoint-search-admin-scripts.md).
+To create a curated allowed list for Restricted SharePoint Search, we recommend you start by creating an initial list of sites. Then you work with your site admins and stakeholders to assess permissions and review the sites. Finally, you can [apply the list with PowerShell scripts](restricted-sharepoint-search-admin-scripts.md) as a [SharePoint Administrator](/sharepoint/sharepoint-admin-role) or [above](/microsoft-365/admin/add-users/about-admin-roles) in Microsoft 365.
 
 ### Step 1: Get an initial list of sites
 
@@ -35,7 +35,7 @@ Every organization might have different criteria on what sites you choose to be 
 
 - **The “Known” sites**: You and your SharePoint site admins already know set of sites from your organization that are safe to participate in organization wide search and the Copilot experience. These sites can be included in the allowed list.
 
-- **The top active and shared sites**: the allowed list affects what users can see in their organization-wide search results and their Copilot experience. To optimize users’ search and Copilot experience, the hypothesis is that those top active and shared sites need to be included in the allowed list.  Depending on your license, you can use either the SharePoint Admin Center (SPAC) or the SharePoint Admin Center Data access governance (SPAC DAG) Activity(sharing) report to identify the most active and shared sites.
+- **The top active and shared sites**: the allowed list affects what users can see in their organization-wide search results and their Copilot experience. To optimize users’ search and Copilot experience, the hypothesis is that those top active and shared sites need to be included in the allowed list.  Depending on your license, you can use either the SharePoint Admin Center (SPAC) or the SharePoint Admin Center [Data access governance (DAG) Activity(sharing) report](/SharePoint/data-access-governance-reports#sharing-links-reports) to identify the most active and shared sites.
 
 ### Step 2: Review site permissions
 
@@ -50,7 +50,7 @@ After you review permissions in your curated sites, you can use PowerShell Scrip
 
 ## Find the most active and shared sites
 
-You can find the most active sites using the SharePoint Admin Center (SPAC). If you have [either Microsoft 365 E5 licensing or Microsoft Syntex - SharePoint Advanced Management](/SharePoint/data-access-governance-reports#requirements), you can also use SPAC DAG to find the most shared sites.  
+You can find the most active sites using the SharePoint Admin Center (SPAC). If you have [either Microsoft 365 E5 licensing or Microsoft - SharePoint Advanced Management](/SharePoint/data-access-governance-reports#requirements), you can also use SPAC DAG to find the most shared sites.  
 
 - **Using SharePoint Admin Center (SPAC):** If your organization has SharePoint, you have access to SPAC. You can get this list of sites using SPAC Active sites feature that had most page views and files in the last 30 days. This can be an indicator to get to the list of sites interested by the broadest possible audience in the organization.   
 
@@ -103,9 +103,10 @@ Your exported CSV file looks similar to the following CSV file:
 
 ### Use SPAC DAG Activity (sharing) report to find most shared sites
 
-The SPAC DAG report (Data access governance reports for SharePoint sites) is part of [SharePoint admin center](https://go.microsoft.com/fwlink/?linkid=2185219). Admins with Microsoft 365 E5 licensing or Microsoft Syntex - SharePoint Advanced Management can access this report. This report helps you identify potential sites that are active and shared in the last 28 days.   
+The SPAC DAG report (Data access governance reports for SharePoint sites) is part of [SharePoint admin center](https://go.microsoft.com/fwlink/?linkid=2185219). Admins with Microsoft 365 E5 licensing or Microsoft - SharePoint Advanced Management can access this report. This report helps you identify potential sites that are active and shared in the last 28 days.   
 
-**Step 1:** In the left pane, select **Reports** > **Data access governance**. Select the **Sharing links** report.
+**Step #1:** In the left pane, select **Reports** > **Data access governance**. Select the **Sharing links** report.
+
 ![Screenshot of where to find SPAC DAG report.](media/rss-spac-dag-1.png)
 
 **Step #2:** In the right pane **Sharing Links** page, select on the **Anyone links** report.
@@ -118,4 +119,4 @@ The SPAC DAG report (Data access governance reports for SharePoint sites) is par
 
 ## Resources
 
-[Microsoft Copilot for Microsoft 365 - best practices with SharePoint](/sharepoint/sharepoint-copilot-best-practices)
+[Microsoft 365 Copilot - best practices with SharePoint](/sharepoint/sharepoint-copilot-best-practices)

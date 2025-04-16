@@ -8,7 +8,7 @@ ms.date: 7/6/2017
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.assetid: 9cea4a3d-c196-4d9e-942d-2677a6c15c13
@@ -50,7 +50,8 @@ This video shows the steps involved in setting up Power Pivot for SharePoint 201
   
 **Video: Configure Power Pivot for SharePoint 2013**
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/8a5c81a1-3524-4fe9-9b7c-d71e59fcf8ef?autoplay=false]
+> [!VIDEO 20e36fec-d232-4ba0-a9ba-caa99246dc32]
+
 ## Prepare the farm
 <a name="proc1"> </a>
 

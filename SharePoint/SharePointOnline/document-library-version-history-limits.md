@@ -1,15 +1,15 @@
 ---
-title: "Version history limits for document library and OneDrive overview (Preview)"
+title: "Version history limits for document library and OneDrive overview"
 ms.reviewer: rekamath
-ms.author: serdars
-author: serdars
-manager: serdars
+ms.author: ruihu
+author: maggierui
+manager: jtemper
 recommendations: true
-ms.date: 05/06/2024
+ms.date: 10/03/2024
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: concept-article
 ms.service: sharepoint
 ms.localizationpriority: medium
 search.appverid:
@@ -18,13 +18,10 @@ search.appverid:
 - MET150
 description: "This article provides guidance on how version history limits are applied at organization, site, library or OneDrive user account level."
 
+
 ---
 
-# Overview of version history limits for document libraries and OneDrive (Preview)
-
-> [!NOTE]
-> Document library version controls at tenant and site level and the new automatic and manual expiration version history limits are currently in preview and are subject to changes. The feature is currently rolling out and might not yet be fully available to all organizations. Before you begin, read the [Version History preview terms and conditions](terms-of-service-version-history.md). Also learn how to [Enable Public Preview](#enable-public-preview).
-
+# Overview of version history limits for document libraries and OneDrive
 
 Version history limits control how versions are stored in a SharePoint document library or OneDrive account. Limits can be set at organization, site, library or OneDrive user account level allowing admins and site owners the ability to better manage content recovery and auditing requirements. Global and SharePoint admins in Microsoft 365 can set version history limits at the organization level. These settings apply universally to all new libraries, whether on existing or new SharePoint sites, and on default libraries on new OneDrive sites. Site owners can overwrite organization-level version settings by [configuring version settings for sites](site-version-limits.md) they own. Site owners can overwrite organization or site settings by [configuring version settings for libraries and lists](https://support.microsoft.com/en-us/office/enable-and-configure-versioning-for-a-list-or-library-1555d642-23ee-446a-990a-bcab618c7a37) they own.
 
@@ -32,21 +29,11 @@ The following table summarizes the various ways of managing version history limi
 
 | Area | How does it work? |
 |:-----|:-----|
-| **Set default version history limits for new document libraries created in your organization** | Default organization version history limits are set on all new document libraries created across existing and new SPO sites. |
+| **Set default organization version history limits** | Default organization version history limits are set on all new document libraries created across existing and new SPO sites. |
 | **Set site or library level version history limits** | If needed, site admins can break inheritance from the default organization limits for an individual site or library. |
 | **Report on version storage on a site** | Run a report to analyze version storage use of existing versions, understand how a version limit works before configuring limits, or analyze the impact of trimming existing versions before scheduling trim job. |
 | **Trim existing versions** | Site admins can choose to trim existing versions by queuing a timer job to execute the trimming. |
 
-## Enable Public Preview
-
-Public preview is turned off by default. To enable Public preview, admins can run the following SharePoint Online Management PowerShell cmdlet:
-
-```powershell
-Set-SPOTenant -EnableVersionExpirationSetting $true. 
-```
-> [!NOTE]
-> 1. Ensure that you have the latest [SharePoint Online Management Shell](https://www.microsoft.com/en-us/download/details.aspx?id=35588).
-> 2. If you receive the error 'The requested operation is a part of an experimental feature that is not supported in the current environment.', this indicates that the feature has not yet reached your tenant. You can try again later.
 
 ## How Version history limits are applied
 
@@ -68,7 +55,7 @@ The following figure shows the workflow of applying a version limit on new docum
 
 There are two version history settings that admins can use to configure version limits for all new libraries created in their organization:
 
-### Automatic Setting
+### Automatic setting
 
 Automatic setting is recommended for optimized version storage. It combines the data recovery benefits that version history offers while optimizing for its storage. For admins, this setting offers the most optimal storage option without having to estimate the version count or age limits needed to meet the diversified need of their end users.<br> For more information, see [version storage under automatic limits](plan-version-storage.md#understand-version-storage-under-automatic-limits).
 
@@ -81,7 +68,7 @@ The manual setting allows admins to set count limits on the number of major vers
 
 - **Major version limits with no expiration period**: Versions are deleted after they exceed the set number of major versions. For example, if a library is configured to store 500 major versions, no more than 500 versions is stored for each file or item.
 
-For more information, see [determining the right count or expiration version limits](plan-version-storage.md#determine-right-count-or-expiration-version-limits). 
+   For more information, see [determining the right count or expiration version limits](plan-version-storage.md#determine-right-count-or-expiration-version-limits). 
 
 > [!NOTE]
 > - The UI doesn't allow a value less than 100 major versions or less than 30 days expiration time limits to be set, but it's possible to set the system to store fewer versions using public APIs. For reliability, any value less than 100 versions or less than 30 days expiration time limit isn't recommended and can result in the user activity causing an inadvertent data loss.
@@ -102,19 +89,21 @@ The following table enumerates the scenarios and the expected version storage be
 | Versions exceed settings applied on the document library. | When versions exceed the limits set at the library, versions matching the criteria are marked for permanent deletion. This version deletion workflow bypasses the normal recycle bin and the deleted versions can't be recovered from recycle bin.|
 | Timer job scheduled to trim existing versions on a library or site. | Versions deleted using scheduled jobs are permanently deleted. This version deletion workflow bypasses the normal recycle bin and deleted versions can't be recovered from recycle bin.|
 | Version storage on items that are subject to retention policy or on an eDiscovery hold. | For items that are subject to a retention policy (or an eDiscovery hold), the versioning limits for the document library are ignored. This exemption  continues until the retention period of the document is reached (or the eDiscovery hold is released). For more information, see [How retention works with document versions](/purview/retention-policies-sharepoint). |
-|Trimming existing versions on sites that are Read Only (locked sites). |Trimming of expired versions on sites that are under retention or are on hold is suspended until the site is unlocked. | 
+|Timer job scheduled to trim existing versions on a library or site encounters versions that are subject to retention policy or on an eDiscovery hold.|When a trim job encounters a version under a retention policy or an eDiscovery hold, it will stamp an expiration date on the version instead of deleting it. Once the expiration date is reached: 1) if the retention policy or eDiscovery hold is still in effect for the version, the expiration date is extended; or 2) if the retention policy or eDiscovery hold has been lifted for the version, the version is deleted. |
+|Trimming existing versions on sites that are Read Only (locked sites). |Trimming of expired versions on sites that are under retention or are on hold is suspended until the site is unlocked. |
 |Versions deletion on items with retention labels applied. | Versioning limits are honored on items with retention labels when the content isn't subject to a retention policy (or an eDiscovery hold). Versions matching the limit criteria are automatically deleted to accommodate new versions, but users are still prevented from deleting versions. |
 | Version deletion on items marked as records. | Version deletion on documents marked as records is blocked. For more information, see [Use record versioning in SharePoint or OneDrive](/purview/record-versioning). |
 
 
 ## Auditing versioning events
 
-Audit events are available on the Microsoft Purview compliance portal to help you monitor version history activities. Audit events are logged for the following activities:
+Audit events are available on the Microsoft Purview portal to help you monitor version history activities. Audit events are logged for the following activities:
 
 - Changes made to organization version history limits.
 - Changes made to site version history limits.
 - Changes made to library version history limits.
+- User queues a job to generate a version storage usage report.
+- User queues a job to update the version history limits on all libraries of a site.
+- User queues a job to bulk delete version history of files on a library or site.
 - User deletes versions from the version history of a file.
-
-
-
+- Versions deleted when expired or bulk deleted.

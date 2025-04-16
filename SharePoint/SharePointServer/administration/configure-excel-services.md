@@ -8,7 +8,7 @@ ms.date: 7/14/2017
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.assetid: a2ef35c4-6b29-4ad1-8652-48a019838ea0
@@ -43,7 +43,8 @@ This video shows the steps involved in creating an Excel Services service applic
   
 **Video: Configure Excel Services in SharePoint Server 2013**
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/7f1bbb20-a1b5-43a6-a8a0-1412de5e76f1?autoplay=false]
+> [!VIDEO 6e05e164-77b3-4957-aa73-05a83ba7480c]
+
 ## Configure the application pool account
 <a name="proc1"> </a>
 

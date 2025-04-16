@@ -8,7 +8,7 @@ ms.date: 12/5/2017
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.collection:
@@ -26,6 +26,9 @@ description: Setting up cloud hybrid search for SharePoint in Microsoft 365 requ
 # Plan cloud hybrid search for SharePoint in Microsoft 365
 
 [!INCLUDE[appliesto-2013-2016-2019-SUB-SPO-md](../includes/appliesto-2013-2016-2019-SUB-SPO-md.md)]
+
+> [!IMPORTANT]
+> Search Content Service (SCS), an internal component of Cloud Hybrid Search in SharePoint in Microsoft 365 will be retired starting June 30, 2025. To continue using Cloud Hybrid Search by then, upgrade your SharePoint Server farm to [SharePoint Server Subscription Edition (SPSE) Version 25H1](/SharePoint/what-s-new/new-and-improved-features-in-sharepoint-server-subscription-edition-25h1-release#cloud-hybrid-search-upgrade) or later versions. Without this upgrade, all versions of SharePoint Server 2019/2016 and previous versions of SPSE can only search for on-premises and Microsoft 365 content separately through Hybrid Federated Search after this retirement.
 
 Setting up [cloud hybrid search](learn-about-cloud-hybrid-search-for-sharepoint.md) for SharePoint in Microsoft 365 requires careful planning. This article helps you design a highly reliable, secure and scalable cloud hybrid search solution. 
   
@@ -65,7 +68,7 @@ Some of the search features you might be familiar with from SharePoint Server wo
   
 Some of the search features you might be familiar with from SharePoint Server aren't available with cloud hybrid search. Plan to inform your users.
   
- **Multi-tenancy on SharePoint Server 2013 or SharePoint Server 2016 farm** - A SharePoint Server 2013 orSharePoint Server 2016 farm can only attach to one tenant in SharePoint in Microsoft 365, therefore SharePoint can't preserve the tenant isolation of a multi-tenant SharePoint Server 2013 or SharePoint Server 2016 farm. 
+ **Multi-tenancy on SharePoint Server 2013 or SharePoint Server 2016 farm** - A SharePoint Server 2013 or SharePoint Server 2016 farm can only attach to one tenant in SharePoint in Microsoft 365, therefore SharePoint can't preserve the tenant isolation of a multi-tenant SharePoint Server 2013 or SharePoint Server 2016 farm. 
   
  **Custom entity extraction** - Custom entity extraction isn't available with cloud hybrid search because SharePoint in Microsoft 365 doesn't support custom entity extraction. 
   
@@ -191,7 +194,7 @@ Set up cloud hybrid search in combination with hybrid federated search.
   
 ![Illustration showing a combined set-up of cloud hybrid search, hybrid federated search, and enterprise search.](../media/5f6f87b3-55ab-4f95-b453-3877c1e3915b.png)
   
-- Plan content sources for the cloud Search service application (cloud SSA) in SharePoint Server that cover all on-premises content except the sensitive content. The metadata for the crawled content is added the search index in Office 365.
+- Plan content sources for the cloud Search service application (cloud SSA) in SharePoint Server that covers all on-premises content except the sensitive content. The metadata for the crawled content is added the search index in Office 365.
     
 - Plan enterprise search in SharePoint Server to crawl the sensitive, on-premises content, see [Plan search in SharePoint Server](../search/search-planning.md). Plan content sources for the SSA that cover the sensitive content. The metadata from the crawled, sensitive content is added to the search index in SharePoint Server.
     
@@ -210,7 +213,7 @@ Plan for a custom result source that limits your Search Centers in Office 365 to
     
 2. Microsoft 365 content. During crawl, metadata from this content is added to the Microsoft 365 search index.
     
-3. Default (or existing) Microsoft 365 Search Center. You create a custom result source for this Search Center, which limits search results to show only Microsoft 365 content. .
+3. Default (or existing) Microsoft 365 Search Center. You create a custom result source for this Search Center, which limits search results to show only Microsoft 365 content.
     
 4. New Microsoft 365 Search Center, where you validate and tune how hybrid search results are shown. This Search Center uses the default result source and shows search results from both on-premises and Microsoft 365 content. You set up access so only testers and administrators have access to this site.
     
@@ -220,7 +223,7 @@ Plan for a custom result source that limits your Search Centers in Office 365 to
 ## Related Topics
 <a name="BKMK_Plan_validation"> </a>
 
-[Learn about cloud hybrid search for SharePoint in Microsoft 365](learn-about-cloud-hybrid-search-for-SharePoint in Microsoft 365.md)
+[Learn about cloud hybrid search for SharePoint in Microsoft 365](learn-about-cloud-hybrid-search-for-sharepoint.md)
   
 [Configure cloud hybrid search - roadmap](configure-cloud-hybrid-searchroadmap.md)
   

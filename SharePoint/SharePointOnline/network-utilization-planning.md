@@ -1,14 +1,14 @@
 ---
-ms.date: 11/14/2023
+ms.date: 09/01/2024
 title: "Network utilization planning for the OneDrive sync app"
-ms.reviewer: 
+ms.reviewer: kafeaver
 ms.author: mactra
 author: MachelleTranMSFT
 manager: jtremper
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: one-drive
 ms.localizationpriority: medium
 ms.collection: 

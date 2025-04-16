@@ -1,5 +1,5 @@
 ---
-ms.date: 4/11/2024
+ms.date: 04/05/2025
 title: "Silently configure user accounts"
 ms.reviewer: wsproule
 ms.author: mactra
@@ -70,11 +70,11 @@ Using Group Policy:
 > See the [Verify SilentAccountConfig](use-silent-account-configuration.md#VerifySilentAccountConfig) section below to verify and troubleshoot your configuration.
   
 > [!NOTE]
-> Silent account configuration won't work on devices for users who require multi-factor authentication. Select third-party identity providers (IdPs) are supported, but there are caveats. For more information, make sure to check out the [Microsoft Entra federation compatibility list](/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
+> Silent account configuration won't work on devices for users who require multifactor authentication. Select third-party identity providers (IdPs) are supported, but there are caveats. For more information, make sure to check out the [Microsoft Entra federation compatibility list](/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
 >
 > Configuration with Alternate IDs is only supported within Microsoft 365 Government environments.
 
-If the computers on your network aren't connected to Active Directory on-premises, but only to Microsoft Entra ID, we recommend using Intune and a Microsoft PowerShell script to set the registry keys required to enable silent account configuration. Be sure you have [automatic enrollment set up for Windows 10 or newer devices](/intune/quickstart-setup-auto-enrollment).
+If the computers on your network aren't connected to Active Directory on-premises, but only to Microsoft Entra ID, we recommend using Intune and a Microsoft PowerShell script to set the registry keys required to enable silent account configuration. Be sure you have [automatic enrollment set up for Windows 10 or newer devices](/mem/intune/enrollment/windows-enroll?formCode=MG0AV3).
 
 Using a script:
 
@@ -109,7 +109,7 @@ reg delete HKCU\Software\Microsoft\OneDrive /v OneAuthUnrecoverableTimestamp /f
 
 ### Instructions for SharePoint in Microsoft 365
 
-1. Unlink all pre-existing Business instances in OneDrive.
+1. Unlink all preexisting Business instances in OneDrive.
 
 2. Clear the registry of any previous successful Silent Business Config runs:
 
@@ -180,7 +180,7 @@ If you have a computer you think should work with SilentAccountConfig, you can m
 
 8. If a password prompt doesn't appear, your auth environment is properly configured and SilentAccountConfig should work for your users.
 
-9. If you do see a password prompt, the environment isn't configured properly for silent sign-on. This could be due to a problem with how the computer is domain joined (for example, a trust relationship problem), a problem with ADFS configuration, a Microsoft Entra Conditional Access policy requiring user interaction, you didn't provide the same user email address as the one used to sign into Windows, or some other reason. You'll need to resolve whatever is blocking silent sign-on before SilentAccountConfig will work for you.
+9. If you do see a password prompt, the environment isn't configured properly for silent sign-on. This could be due to a problem with how the computer is domain joined (for example, a trust relationship problem), a problem with ADFS configuration, a Microsoft Entra Conditional Access policy requiring user interaction, you didn't provide the same user email address as the one used to sign into Windows, or some other reason. You need to resolve whatever is blocking silent sign-on before SilentAccountConfig works for you.
 
 10. Remove any OneAuth failure timestamp
 

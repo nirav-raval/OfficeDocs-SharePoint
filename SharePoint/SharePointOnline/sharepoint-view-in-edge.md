@@ -1,5 +1,5 @@
 ---
-ms.date: 09/08/2021
+ms.date: 11/25/2024
 title: "View SharePoint files with File Explorer in Microsoft Edge"
 ms.reviewer:
 ms.author: ruihu
@@ -9,7 +9,7 @@ recommendations: true
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-online
 ms.localizationpriority: medium
 ms.collection:
@@ -42,9 +42,9 @@ Follow the steps below to use View in File Explorer in Microsoft Edge:
 
 3. Enable the [ConfigureViewInFileExplorer](/deployedge/microsoft-edge-policies#configureviewinfileexplorer) policy for Microsoft Edge that allows URLs with the viewinfileexplorer: scheme to open WebDAV URLs in Windows File Explorer.
 
-Use the options below to enable View in File Explorer using group policy or Intune:
+   Use the options below to enable View in File Explorer using group policy or Intune:
 
-- **To enable by using group policy**:
+   - **To enable by using group policy**:
 
      1. Configure Microsoft Edge policy settings by following the steps at [Configure Microsoft Edge policy settings on Windows](/deployedge/configure-microsoft-edge).
 
@@ -56,26 +56,22 @@ Use the options below to enable View in File Explorer using group policy or Intu
 
      5. Enabling the group policy may require a refresh of client group policy settings. After changing the group policy settings, refresh the settings. From a Command Prompt, enter **GPUpdate.exe /force**.
 
-        Example below with the Group Policy value:
+        Following is an example of the Group Policy value:
 
         `[{"cookies": ["rtFa", "FedAuth"], "domain": "sharepoint.com"}]`
 
-        :::image type="content" source="media/edgepolicy-adeejoseph.png" alt-text="Enable Configure the View in File Explorer feature for SharePoint pages in Microsoft Edge":::
-
         For more examples, see [ConfigureViewInFileExplorer](/deployedge/microsoft-edge-policies#configureviewinfileexplorer) on Microsoft Edge policy reference.
 
-- **To enable by using Intune**:
+   - **To enable by using Intune**:
 
      Configure Microsoft Edge policy settings by following the steps at [Configure Microsoft Edge policy settings with Microsoft Intune](/deployedge/configure-edge-with-intune).
 
-5. Verify the policy has been enabled by opening Microsoft Edge and navigating to **Microsoft Edge://policy/**.
-
-    :::image type="content" source="media/microsoft-edge-policy.png" alt-text="Snapshot of Microsoft Edge Policies page ":::
+4. Verify the policy has been enabled by opening Microsoft Edge and navigating to **Microsoft Edge://policy/**.
 
     > [!TIP]
     > You may need to close and re-open Microsoft Edge for the policy to appear.
 
-6. As a tenant administrator, update your SharePoint Online tenant configuration via SharePoint Online Management Shell to allow the "View in File Explorer" option to be visible in the Microsoft Edge Browser interface with these steps:
+5. As a tenant administrator, update your SharePoint Online tenant configuration via SharePoint Online Management Shell to allow the "View in File Explorer" option to be visible in the Microsoft Edge Browser interface with these steps:
 
     1. Connect to SharePoint Online Management Shell by running:
 
@@ -92,11 +88,11 @@ Use the options below to enable View in File Explorer using group policy or Intu
         > [!NOTE]
         > Ensure the management shell version is 16.0.21610.12000 or higher or the ViewInFileExplorerEnabled option will not be available.
 
-7. **(Required)** _View in File Explorer_ requires persistent cookies to operate correctly; when you sign in, select **Yes** when the **Stay signed in?** prompt appears.
+6. **(Required)** _View in File Explorer_ requires persistent cookies to operate correctly; when you sign in, select **Yes** when the **Stay signed in?** prompt appears.
 
-    You can locate the View in Explorer button by navigating to the **Library** >  Select the **Library View Menu** on the right-hand side > Select **View In File Explorer**.
+    You can locate the View in Explorer button by navigating to the **Library** >  select the **Library View Menu** on the right-hand side > select **View In File Explorer**.
 
-    :::image type="content" source="media/view-in-file-explorer.png" alt-text="Menu for View in File Explorer":::
+    :::image type="content" source="media/view-in-file-explorer.png" alt-text="Screenshot of the menu for View in File Explorer.":::
 
     > [!NOTE]
     > Once the tenant setting has been enabled, it may take up to 15 minutes for the View in Explorer button to appear in the SharePoint interface.
@@ -111,7 +107,7 @@ You can verify that the policy has been applied by navigating to **edge://policy
 
 This error occurs when you attempt to apply this policy to a nondomain joined device. Currently, the ConfigureViewInFileExplorer policy can only be applied to Windows instances that are joined to a Microsoft Active Directory domain, Windows 10 Pro, or Enterprise instances enrolled for device management.
 
-:::image type="content" source="media/edge-error.png" lightbox="media/edge-error.png" alt-text="User interface of the 'This policy is blocked - its value will be ignored' error message.":::
+:::image type="content" source="media/edge-error.png" lightbox="media/edge-error.png" alt-text="Screenshot of the user interface of the 'This policy is blocked - its value will be ignored' error message.":::
 
 **What happens if I have the policy applied without the tenant setting enabled?**
 
@@ -121,7 +117,7 @@ If you don't enable ViewInFileExplorerEnabled via [Set-SPOTenant](/powershell/mo
 
 If you have enabled ViewInFileExplorerEnabled, you may see the View In File Explorer button appear in your SharePoint library, however, clicking the button results in a blank screen.
 
-:::image type="content" source="media/edgepolicy-blank-screen.png" alt-text="Blank screen that appears when the tenant setting is enabled without the policy applied.":::
+:::image type="content" source="media/edgepolicy-blank-screen.png" alt-text="Screenshot of a blank screen that appears when the tenant setting is enabled without the policy applied.":::
 
 **When running Set-SPOTenant -ViewInFileExplorerEnabled $True I received the error "The requested operation is part of an experimental feature that is not supported in the current environment". What's wrong?**
 

@@ -4,11 +4,11 @@ ms.reviewer: cagreen
 ms.author: mactra
 author: MachelleTranMSFT
 manager: jtremper
-ms.date: 04/11/2024
+ms.date: 04/05/2025
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: one-drive
 ms.localizationpriority: medium
 ms.collection: M365-collaboration

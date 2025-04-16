@@ -8,7 +8,7 @@ ms.date: 7/7/2017
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-server-itpro
 ms.localizationpriority: medium
 ms.assetid: 5e44cf6c-2271-4ff1-af7f-4e73849ffdf6
@@ -54,7 +54,8 @@ This video shows the steps involved in installing and configuring the AdventureW
   
 **Video: Configure AdventureWorks for Business Intelligence solutions**
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/f30286e4-f448-4480-ab49-99c014d88144?autoplay=false]
+> [!VIDEO c883edc4-0acd-4a48-b499-f4c7b94b7798]
+
 ## Install the AdventureWorks sample data
 <a name="InstallAdventureWorks"> </a>
 

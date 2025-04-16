@@ -1,5 +1,5 @@
 ---
-ms.date: 05/12/2020
+ms.date: 04/08/2025
 title: "Step 6: Migrate and monitor Egnyte migration"
 ms.reviewer: 
 ms.author: heidip
@@ -8,9 +8,9 @@ manager: jtremper
 audience: ITPro
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.service: microsoft-365-migration
-localization_priority: Priority
+ms.localizationpriority: medium
 ms.collection: 
 - m365solution-migratefileshares
 - m365solution-migratetom365
@@ -25,35 +25,37 @@ description: "Step 6: Migrate and monitor Egnyte migration"
 ---
 # Step 6:  Migrate and monitor your Egnyte migration
 
-Once have reviewed the accounts, confirmed the destinations, correctly mapped identities, you're ready to migrate.
+Once you review the tasks (Egnyte folders), confirm the destinations, and correctly map identities, you're ready to migrate.
 
 >[!Important]
->We strongly recommend that you do not rename or move migrated files before the final migration has been completed.  Doing so will result in files being overwritten.
-
+>We strongly recommend you don't rename or move migrated files before the final migration has been completed. Doing so results in files being overwritten.
 
 1. Select the accounts to migrate.
 2. Select **Migrate**.
-
-![Select migrate button](media/mm-box-migrate-button.png) 
-
-3. A confirmation step displays.  Select **Migrate**.  
-
+3. A confirmation panel displays. Select **Migrate**.
+4. Once the migration starts, monitor the migration status, and the table summary at the top. Depending on how large your migration, this step can take hours or days.
 >[!Note]
-> Starting your migration only copies content from your Egnyte account to the location you have specified in Microsoft 365.  Make sure the destinations are correct, as once the migration starts, they cannot be modified.
+> Starting your migration only copies content from your Egnyte account to the location you have specified in Microsoft 365. Make sure the destinations are correct. Once migration starts, they can't be modified.
 
-4. Once the migration begins, monitor the migration status, and the table summary at the top.  Depending on how large your migration, this step can take hours or days.
+## Download reports
+
+**Migration summary report** and **Migration detailed reports** are available to assist you in troubleshooting. [Download the generated reports](/sharepointmigration/mm-cloud-reports#download-migration-reports) to investigate any possible issues that occurred during the migration. 
+
+Check the [status code](/sharepointmigration/mm-cloud-reports#status-codes) in **Migration summary report** to address task-level errors. For file-level errors, refer to the [failure code (*ResultCode*)](/sharepointmigration/mm-cloud-reports#failure-codes) in the **Migration detailed report**.
+
+After resolving the issues related to warnings or failed tasks, migrate the tasks again to ensure the successful migration of all required files.
+
+## Delta sync
+When a migration task is conducted for the first time, we call it an initial migration or new migration. After the initial migration, the destination can't be changed. If the task is migrated again, we call it a delta sync. We may also call it an incremental sync, or incremental migration. Learn more about [file transfer behaviors in a delta sync](mm-delta-sync.md).
 
 
-## How many task rows can I run at once?
+## Migration lanes
 
 At a maximum, only 50 task rows can run simultaneously. This total includes both scanning and migrating.
 
-If you select more than that total combined number and start scanning or migrating, only 50 randomly chosen rows run. The rest is queued.
+If you select more than that total combined number and start scanning or migrating, only 50 randomly chosen rows run. The remaining rows are queued.
 
 As a task row completes, another from the queue starts migrating or scanning automatically. The maximum allowed is 50 task rows. However, if a migration experiences any slowdowns or back-off requests, it can drop lower than this number to keep the migration stable.
 
->[!NOTE]
->Migration Manager Egnyte Workspace isn't available for users of Office 365 operated by 21Vianet in China.
->
-> This feature is also not supported for users of the Government Cloud, including GCC, Consumer, GCC High, or DoD.
-
+## Schedule a migration
+Migration Manager allows you to schedule a migration for one or multiple tasks. This migration is a one-time migration event. When the scheduled time arrives, Migration Manager starts queuing the scheduled tasks. The queued tasks begin migrating immediately if the migration lane limit isn't reached.

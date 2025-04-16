@@ -1,15 +1,15 @@
 ---
-title: "Trim existing versions on site, library, or OneDrive(Preview)"
+title: "Trim existing versions on site, library, or OneDrive"
 ms.reviewer: rekamath
 ms.author: ruihu
 author: maggierui
 manager: jtremper
 recommendations: true
-ms.date: 04/30/2024
+ms.date: 10/03/2024
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint
 ms.localizationpriority: medium
 search.appverid:
@@ -21,10 +21,10 @@ description: "This article provides guidance on how to trim existing versions fr
 ---
 
 
-# Trim existing versions from site, library, or OneDrive(Preview) 
+# Trim existing versions from site, library, or OneDrive
 
 > [!CAUTION]
-> Versions deleted using trimming jobs are permanently deleted. This deletion workflow bypasses the normal recycle bin retention and deleted versions cannot be recovered. 
+> Versions deleted using trimming jobs are permanently deleted. This deletion workflow bypasses the normal recycle bin retention and deleted versions cannot be recovered. To prevent unwanted data loss, we highly recommend to [run an impact analysis](tutorial-run-what-if-analysis.md) before trimming activity.
 
 As a SharePoint admin in Microsoft 365, you can queue a job to trim existing versions on a site, library, or OneDrive user account to reduce the version storage footprint of your site. You can also align existing version storage with updated version history limits by scheduling a job to trim existing versions or align existing version storage with updated Version history limits.<br> There are several things you need to consider before you decide to trim existing Version history on a site or library. Version availability is critical for recovery scenarios like undoing unwanted changes. Versions deleted using trimming jobs are permanently deleted and can't be recovered from recycle bin. 
 
@@ -38,9 +38,12 @@ As a SharePoint admin in Microsoft 365, you can queue a job to trim existing ver
 
 :::image type="content" source="media/version-history/trimming-workflows.png" lightbox="media/version-history/trimming-workflows.png" alt-text="Diagram of trimming workflows.":::
 
+> [!NOTE]
+> Trim jobs are background jobs that are influenced by factors such as the volume of file versions to be evaluated, service health, and other jobs being processed on the farm. They are also subject to off-peak hour processing logic. The progress of a trim job can always be tracked.
+
 ## Review impact by running ‘What-if’ analysis 
 
-Before committing to trim existing versions, you can review the impact of the purge action by running a ‘What-if’ analysis operation.  Running a ‘What-if’ operation will follow these steps: 
+Before committing to trim existing versions, you can review the impact of the purge action by running a ‘What-if’ analysis operation.  Running a ‘What-if’ operation follows these steps: 
 
 - **Generate a Version Storage usage report for a site or library**: This report can support multiple uses including, version storage use analytics or to gain key insights on the impact of applying different trimming settings. 
 
@@ -51,7 +54,7 @@ Before committing to trim existing versions, you can review the impact of the pu
 
 ## Version trim modes
 
-Version trimming workflows allow you to select and apply one of the trimming modes for scheduling a trim job on a site, document library, or OneDrive account.
+Version trimming workflows allow you to select and apply one of the trimming modes for queuing a trim job on a site, document library, or OneDrive account.
 
 **Manual expiration trim mode:** Evaluates the age of versions and deletes versions matching the expiration criteria. 
 
@@ -63,12 +66,12 @@ Version trimming workflows allow you to select and apply one of the trimming mod
 > [!IMPORTANT]
 > Known limitations of manual expiration mode
 > 1. The expire trim mode doesn't delete versions created in the last 30 days. This means your input can't be less than 30 days.
-> 1. The expire trim mode always deletes all versions that were created before January 1, 2023. If you want to trim versions, you can't keep any older than that. This means the value you use for the `DeleteBeforeDays` parameter should result in date after January 1, 2023.
+> 1. The expire trim mode always deletes all versions that were created before January 1, 2023. If you want to trim versions, you can't keep any older versions created before January 1, 2023. This means the value you use for the `DeleteBeforeDays` parameter should result in date after January 1, 2023.
 
 
 **Manual count limit trim mode:** Deletes the oldest versions exceeding the specified count limit.
 
-**Example:** In the example below, a trim job is queued to delete versions that exceed 50 major version counts. On August 31, the job starts permanently deleting older versions that exceed the 50 major version count limit as of August 31.
+**Example:** In the following example, a trim job is queued to delete versions that exceed 50 major version counts. On August 31, the job starts permanently deleting older versions that exceed the 50 major version count limit as of August 31.
 
    :::image type="content" source="media/version-history/manual-count-limit-trim-table.png" lightbox="media/version-history/manual-count-limit-trim-table.png" alt-text="Diagram of manual count limit.":::
 
@@ -86,6 +89,9 @@ To queue the trim job, you need to determine the scope for version deletion and 
 
 Once you're ready to commit to the trim, you can queue the job to asynchronously delete versions matching the trim mode criteria. You'll be able to monitor the progress of committed trim jobs to keep track of the deletion progress. 
 
+> [!NOTE]
+> To learn more about how version trimming works on versions that are subject to a retention policy or an eDiscovery Hold, please read the [FAQs](/sharepoint/faqs-for-versions).
+
 ## Trim existing versions using PowerShell
 
 Follow these steps to trim existing versions using PowerShell.
@@ -98,13 +104,13 @@ Follow these steps to trim existing versions using PowerShell.
 1. Connect to SharePoint as a [Administrator or SharePoint Administrator](/sharepoint/sharepoint-admin-role) in Microsoft 365. To learn how, see [Getting started with SharePoint Online Management Shell](/powershell/sharepoint/sharepoint-online/connect-sharepoint-online).
 2. Run one of the following commands to trim the existing versions:
 
-| **Action** | **PowerShell Command** |
-| --- | --- |
-| Queue a trim job to expire versions | **Expire versions on a site:**<br><br>`New-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl -DeleteBeforeDays <days>`<br><br>**Expire versions on a library:**<br><br>`New-SPOListFileVersionBatchDeleteJob -Site $siteUrl -list $libName -DeleteBeforeDays <days>` |
-| Queue a trim job to delete versions exceeding the specified count limit | **Delete versions exceeding count limits from a site:**<br><br>`New-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl -MajorVersionLimit <delete major versions exceeding limit> -MajorWithMinorVersionsLimit <delete minor versions exceeding limit>`<br><br>**Delete versions exceeding count limits from a library:**<br><br>`New-SPOListFileVersionBatchDeleteJob -Site $siteUrl -list $libName -MajorVersionLimit <delete major versions exceeding limit> -MajorWithMinorVersionsLimit <delete minor versions exceeding limit>` |
-| Queue trim job to delete versions using the estimated automatic trimming algorithm | **Apply automatic logic to trim existing versions from a Site:**<br><br>`New-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl -Automatic`<br><br>**Apply automatic logic to trim existing versions from a library:**<br><br>`New-SPOListFileVersionBatchDeleteJob -Site $siteUrl -List $libName -Automatic` |
-| Stop further processing of an in-progress trim job<br><br>**Note:** Once the cmdlet executes successfully, all new asynchronous version deletion is stopped. Stopping a trim job doesn't impact versions that are permanently deleted when the job was in progress. | **To stop processing an in-progress site level trim     job:**<br><br>`Remove-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl`<br><br>**To stop processing an in-progress library level trim job:**<br><br>`Remove-SPOListFileVersionBatchDeleteJob -Site $siteUrl -List $libName` |
-| Get the status for a file version trimming job | **To get status of a site level trimming job:**<br><br>`Get-SPOSiteFileVersionBatchDeleteJobProgress -Identity $siteUrl`<br><br>**To get status of a library level trimming job:**<br><br>`Get-SPOListFileVersionBatchDeleteJobProgress -Site $siteUrl -List $libName` |
+   | **Action** | **PowerShell Command** |
+   | --- | --- |
+   | Queue a trim job to expire versions | **Expire versions on a site:**<br><br>`New-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl -DeleteBeforeDays <days>`<br><br>**Expire versions on a library:**<br><br>`New-SPOListFileVersionBatchDeleteJob -Site $siteUrl -list $libName -DeleteBeforeDays <days>` |
+   | Queue a trim job to delete versions exceeding the specified count limit | **Delete versions exceeding count limits from a site:**<br><br>`New-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl -MajorVersionLimit <delete major versions exceeding limit> -MajorWithMinorVersionsLimit <number of major versions for which all minor versions will be kept>`<br><br>**Delete versions exceeding count limits from a library:**<br><br>`New-SPOListFileVersionBatchDeleteJob -Site $siteUrl -list $libName -MajorVersionLimit <delete major versions exceeding limit> -MajorWithMinorVersionsLimit <number of major versions for which all minor versions will be kept>` |
+   | Queue trim job to delete versions using the estimated automatic trimming algorithm | **Apply automatic logic to trim existing versions from a Site:**<br><br>`New-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl -Automatic`<br><br>**Apply automatic logic to trim existing versions from a library:**<br><br>`New-SPOListFileVersionBatchDeleteJob -Site $siteUrl -List $libName -Automatic` |
+   | Stop further processing of an in-progress trim job<br><br>**Note:** Once the cmdlet executes successfully, all new asynchronous version deletion is stopped. Stopping a trim job doesn't impact versions that are permanently deleted when the job was in progress. | **To stop processing an in-progress site level trim     job:**<br><br>`Remove-SPOSiteFileVersionBatchDeleteJob -Identity $siteUrl`<br><br>**To stop processing an in-progress library level trim job:**<br><br>`Remove-SPOListFileVersionBatchDeleteJob -Site $siteUrl -List $libName` |
+   | Get the status for a file version trimming job | **To get status of a site level trimming job:**<br><br>`Get-SPOSiteFileVersionBatchDeleteJobProgress -Identity $siteUrl`<br><br>**To get status of a library level trimming job:**<br><br>`Get-SPOListFileVersionBatchDeleteJobProgress -Site $siteUrl -List $libName` |
 
 
 ## Learn More

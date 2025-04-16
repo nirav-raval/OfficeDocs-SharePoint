@@ -51,17 +51,17 @@ The following apps and scenarios don't work with authentication contexts:
 
 - Older version of Office apps (see the [list of supported versions](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#more-information-about-the-dependencies-for-the-authentication-context-option))
 - Viva Engage
-- Teams web app
 - OneNote app can't be added to channel if the associated SharePoint site has an authentication context.
 - Teams channel meeting recording upload fails on sites with an authentication context.
 - SharePoint folder renaming in Teams fails if the site has an authentication context.
 - Teams webinar scheduling fails if OneDrive has an authentication context.
-- Third-party apps
 - The OneDrive sync app won't sync sites with an authentication context.
 - Associating an authentication context to the enterprise application catalog site collection isn't supported.
 - The “Visualize SharePoint List in Power BI” feature doesn't currently support authentication context.
 - Outlook on Windows, Mac, Android, and iOS don't support communication with SharePoint sites protected by an Authentication Context.
 - The multiple-file download feature currently doesn't function when both the authentication context and 'Use Conditional Access App Control' in session control are enabled in the conditional access policy.
+- The file copy and move feature between different regions (cross-geo) currently doesn’t function when an authentication context is applied to the destination site.
+- Exporting to Excel as an Excel Web Query (IQY) doesn't currently support authentication context.
 
 ## Setting up an authentication context
 
@@ -138,7 +138,7 @@ If you want to use a sensitivity label to apply the authentication context, upda
 
 To update a sensitivity label
 
-1. In the [Microsoft Purview compliance portal](https://compliance.microsoft.com/informationprotection), on the **Information protection** tab, select the label that you want to update and then select **Edit label**.
+1. In the [Microsoft Purview portal](https://purview.microsoft.com/informationprotection), on the **Information protection** tab, select the label that you want to update and then select **Edit label**.
 
 2. Select **Next** until you are on the **Define protection settings for groups and sites** page.
 
@@ -156,13 +156,17 @@ To update a sensitivity label
 
 Once the label has been updated, guests accessing a SharePoint site (or the **Files** tab in a team) with that label will be required to agree to the terms of use before gaining access to that site.
 
-## Blocking background apps (rolling out in preview)
+## Blocking background apps
 
 If authentication context is set on a site, admins can choose to prevent background apps from accessing that site for the apps assigned with that authentication context in a conditional access policy. You can configure a conditional access policy such that a specific authentication context can be assigned to chosen application principles (non-Microsoft applications). You need to explicitly turn on this feature via the following cmdlet. You should have at least one conditional access policy with an application principle configured.
 
 ```PowerShell
-Set-SPOTenant -BlockAPPAccessToSitesWithAuthenticationContext $false/$true (default false)
+Set-SPOTenant -BlockAppAccessWithAuthenticationContext $false/$true (default false)
 ```
+
+## Third party app integration
+
+Third party apps using sites with authentication context attached will need to be able to handle claims challenge. If you have third party apps then we recommend test the apps and you read guidance [here](/entra/identity-platform/developer-guide-conditional-access-authentication-context).
 
 ## See also
 

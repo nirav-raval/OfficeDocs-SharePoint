@@ -8,7 +8,7 @@ manager: jtremper
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: conceptual
+ms.topic: article
 ms.service: sharepoint
 ms.localizationpriority: medium
 search.appverid:
@@ -22,8 +22,6 @@ description: "Learn what SharePoint Brand Center is, how to set it up and manage
 ---
 
 # SharePoint brand center
-> [!NOTE]
-> The SharePoint brand center is currently in preview.
 
 The SharePoint brand center offers a centralized branding management application that empowers your brand managers or designated brand owners to help your organization to customize the look and feel of their experiences.
 
@@ -33,7 +31,6 @@ With this new brand asset management system, you can handle your colors, fonts, 
 
 The brand center uses the SharePoint Organization Asset Library (OAL) to store and manage assets in the background. The brand center app is located in a designated site within your tenant.
 
-![Screenshot of Brand Center preview overview.](media/brand-center-preview.png)
 
 > [!NOTE]
 > The SharePoint brand center currently only allows one brand center for your organization, and the Global Administrator sets it up.
@@ -66,7 +63,7 @@ For this scenario, the global administrator performs the following steps to crea
 
 1. In the admin center, go to **Settings \> Org settings**.
 
-1. Select **Brand center (preview)**.
+1. Select **Brand center**.
 
 1. Choose site name for the Brand Center site – Suggested “Brand Guide”.
 
@@ -82,7 +79,7 @@ For this scenario, the global administrator performs the following steps to crea
 
 1. In the admin center, go to **Settings \>** **Org settings**.
 
-1. Select **Brand center (preview)**.
+1. Select **Brand center**.
 
 1. The Brand center recognizes your existing organization assets site location and will utilize this as the location for the Brand center app.
 
@@ -98,7 +95,7 @@ For this scenario, the global administrator needs to perform the following steps
 
 1. In the admin center, go to **Settings \> Org settings**.
 
-1. Select **Brand center (preview)**.
+1. Select **Brand center**.
 
 1. The Brand center recognizes your existing organization assets site location and will utilize this as the location for the Brand center app.
 
@@ -108,21 +105,18 @@ For this scenario, the global administrator needs to perform the following steps
 
 After you finish setting up your SharePoint brand center, you can control who can access the brand center app by customizing the site permissions of the brand center site. Site owners of the brand center site will be able to use the brand center app.
 
-![Screenshot of accessing sharepoint admin center from MAC.](media/brand-center-admin-setup-final.png)
 
 ## Managing the brand center
 
 The SharePoint brand center includes two levels of management: the Microsoft 365 Admin Center and the Brand Center associated SharePoint site. Within the Microsoft 365 Admin Center, the global administrator has control over the enablement of the Brand Center and easy access to the associated site with management in the SharePoint Admin Center.
 
-From the Brand center associated site, [SharePoint site owners](/sharepoint/site-permissions#site-owners) and above (./site-permissions) can update the site permissions in the SharePoint Admin Center such as adding more brand managers to the experience. You can do this by adding members to the site owners’ group. Within the app itself, the brand managers are able to upload and manage their organization’s brand assets.
+From the Brand center associated site, [SharePoint site owners](/sharepoint/site-permissions#site-owners) and [above](/sharepoint/site-permissions) can update the site permissions in the SharePoint Admin Center such as adding more brand managers to the experience. You can do this by adding members to the site owners’ group. Within the app itself, the brand managers are able to upload and manage their organization’s brand assets.
 
 |Who?|Where?|What?|
 |----|------|-----|
 |Global administrator|Microsoft 365 Admin Center|- Enablement of the brand center <br> -Access to the SharePoint Admin Center of the brand center site|
 |- Global administrator<br>- Site administrator<br >- Site owner|SharePoint Admin Center|Update permissions|
 
-> [!NOTE]
-> The brand center app is limited to brand font management while in Preview.
 
 ## Managing brands in Multi-geo organizations
 
@@ -130,7 +124,7 @@ One of the challenges of managing brand assets across geographies is ensuring co
 
 The SharePoint brand center currently only creates a single brand center app in the primary geo of a tenant. We haven’t changed anything about how this impacts the current multi-geo operations for Organization Asset Image or Template Libraries. However, for custom fonts to work across geographies, the following requirements must be met:
 
-Each additional geography where custom fonts are wanted must have an organization asset library set up in a site that uses the Public CDN. Once these requirements are met, custom fonts show up in the **Change the Look** panel and will work in that geography.
+> Each additional geography where custom fonts are wanted must have an organization asset library set up in a site that uses the Public CDN. Once these requirements are met, custom fonts show up in the **Change the Look** panel and will work in that geography.
 
 > [!NOTE]
 > This does not impact Organization Asset Image Libraries and Template Libraries.

@@ -22,12 +22,12 @@ search.appverid:
 - SPO160
 - MET150
 ms.assetid: 6288296a-b6b7-4ea4-b4ed-c297bf833e30
-description: "Learn how global and SharePoint administrators can change the organization-level sharing settings for SharePoint and OneDrive in Microsoft 365."
+description: "Learn how SharePoint administrators can change the organization-level sharing settings for SharePoint and OneDrive in Microsoft 365."
 ---
 
 # Manage sharing settings for SharePoint and OneDrive in Microsoft 365
 
-This article describes how global administrators and SharePoint administrators in Microsoft 365 can change their organization-level sharing settings for SharePoint and OneDrive. (If you want to share a file or folder, read [Share SharePoint files or folders](https://support.office.com/article/1fe37332-0f9a-4719-970e-d2578da4941c) or [Share OneDrive files and folders](https://support.office.com/article/9fcc2f7d-de0c-4cec-93b0-a82024800c07).)
+This article describes how SharePoint administrators in Microsoft 365 can change their organization-level sharing settings for SharePoint and OneDrive. (If you want to share a file or folder, read [Share SharePoint files or folders](https://support.office.com/article/1fe37332-0f9a-4719-970e-d2578da4941c) or [Share OneDrive files and folders](https://support.office.com/article/9fcc2f7d-de0c-4cec-93b0-a82024800c07).)
 
 For end-to-end guidance around how to configure guest sharing in Microsoft 365, see:
 - [Set up secure collaboration with Microsoft 365](/microsoft-365/solutions/setup-secure-collaboration-with-teams)
@@ -37,7 +37,7 @@ For end-to-end guidance around how to configure guest sharing in Microsoft 365, 
 
 To change the sharing settings for a site after you've set the organization-level sharing settings, see [Change sharing settings for a site](change-external-sharing-site.md). To learn how to change the external sharing setting for a specific user's OneDrive, see [Change the external sharing setting for a user's OneDrive](/onedrive/user-external-sharing-settings).
 
-<a name='sharepoint-and-onedrive-integration-with-azure-ad-b2b'></a>
+[!INCLUDE [sharepoint-setup-guide-tip.md](includes/sharepoint-setup-guide-tip.md)]
 
 ### SharePoint and OneDrive integration with Microsoft Entra B2B
 
@@ -64,7 +64,7 @@ For information on how to enable or disable Microsoft Entra B2B integration, see
 
 This video shows how the settings on the <a href="https://go.microsoft.com/fwlink/?linkid=2185222" target="_blank">**Sharing** page in the SharePoint admin center</a> affect the sharing options available to users.
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4yw9m?autoplay=false]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=e809d51b-9cf6-47d3-b34d-296ab0ad8310]
 
 ## Change the organization-level external sharing setting
 <a name="__turn_external_sharing"> </a>
@@ -74,12 +74,12 @@ This video shows how the settings on the <a href="https://go.microsoft.com/fwlin
 1. Under **External sharing**, specify your sharing level for SharePoint and OneDrive. The default level for both is **Anyone**.
 
 > [!NOTE]
-  > The SharePoint setting applies to all site types, including those connected to Microsoft 365 groups and teams. Groups and Teams guest sharing settings also affect connected SharePoint sites.
-  > 
-  > The OneDrive setting can be more restrictive than the SharePoint setting, but not more permissive.
+> The SharePoint setting applies to all site types, including those connected to Microsoft 365 groups and teams. Groups and Teams guest sharing settings also affect connected SharePoint sites.
+>
+> The OneDrive setting can be more restrictive than the SharePoint setting, but not more permissive.
 
 ![Screenshot of external sharing settings.](media/externalsharing.png)
-   
+
 This setting is for your organization overall. Each site has its own sharing setting that you can set independently, though it must be at the same or more restrictive setting as the organization. See [Change the external sharing setting for a site](change-external-sharing-site.md) for more information.
 
 > [!IMPORTANT]
@@ -174,7 +174,6 @@ This setting is turned on by default at the organization level and off at the si
 
 > [!NOTE]
 > Historical data is included when this setting is enabled. Likewise, if the setting is turned off and back on at the organization level or site level, the views during the off period are included in the history.
-
 **Use short links for sharing files and folders**
 
 Uses a shorter link format for sharing files and folders. This may be useful if you have integrations that require a shorter URL.

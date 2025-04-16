@@ -9,7 +9,7 @@ author: MachelleTranMSFT
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: how-to
 ms.service: sharepoint-online
 ms.localizationpriority: medium
 ms.collection:
@@ -66,10 +66,10 @@ You can create new reports, delete, and refresh their statuses from the change h
 
 Generate a site settings report for a given date range and filter by sites and users. You can download the report as a CSV file to view the site property changes. All site actions performed by Site Administrators and SharePoint Administrators are captured in the report.
 
-### Organization settings report (preview)
+### Organization settings report
 
 > [!NOTE]
-> Organization settings reports are available in public preview. The [audited organization settings table](#current-audited-organization-settings) listed later in this article reflects the list of settings that are currently tracked under these reports.
+> The [audited organization settings table](#current-audited-organization-settings) listed later in this article reflects the list of settings that are currently tracked under organization settings reports
 
 You can also generate an organization settings report to track changes made to organization settings from the SharePoint Admin Center. You can generate these reports for custom date ranges while filtering for specific users of interest. A best practice is to review the downloaded reports to ensure there are no deviations in settings from the desired state.
 

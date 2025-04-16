@@ -1,5 +1,5 @@
 ---
-ms.date: 11/14/2023
+ms.date: 09/16/2024
 title: "Redirect and move macOS known folders to OneDrive"
 ms.reviewer: cagreen
 ms.author: mactra
@@ -8,7 +8,7 @@ manager: jtremper
 audience: Admin
 f1.keywords:
 - NOCSH
-ms.topic: article
+ms.topic: upgrade-and-migration-article
 ms.service: one-drive
 ms.localizationpriority: medium
 ms.collection: 
